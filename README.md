@@ -18,18 +18,17 @@ Prose files are text-only with a file extension of `.prose`.
 ### Grammar
 
 Prose documents are structured as a series of paragraphs. The rules
-below describe the rules prose uses to recognize the language structure.
+below describe how prose expects the writing to be structured.
 
 - Paragraphs are separated by a blank line(s).
 - Paragraphs should be left-justified, i.e. no whitespace at the
   beginning of the line.
 - An indented paragraph acts as a block-quotation.
 - Dialogue is placed in double quotes `"`.
-  - The first double quote starts a dialogue block.
   - A closing double quote closes the dialogue block.
   - If no closing quote is found, the dialogue block ends at a blank line.
 - Text placed between a pair of `*` characters is *italicized*.
-  - Italics ends at the second `*`.
+  - The italicized block ends at the second `*`.
   - If no closing `*` is found, the italicized block ends at the
     next blank line.
 - Text placed between pairs of double underscores `__` is __bold__.
@@ -67,6 +66,10 @@ Special notes are placed inside a pair of brackets `[]`.
 ### Special names
 
 > TODO
+  - when available, prose editor plugins should automatically and
+    temporarily add everything in the .names file to the dictionary
+    for the editor. The purpose is to ensure that the spell-checker
+    recognizes these words.
   - refer to folder structure section regarding location of .names file
 
 ### Syntax highlighting
@@ -99,7 +102,9 @@ Special notes are placed inside a pair of brackets `[]`.
 
 > TODO
   - editor should soft wrap lines
-    - line breaks inside a paragraph make it harder when editing 
+    - line breaks inside a paragraph make it harder when editing
+  - use only one blank line after every paragraph
+  - enable spell-checking in your editor
 
 ### Acknowledgements
 
