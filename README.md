@@ -125,9 +125,26 @@ The morning brought frost-covered grass on the lawn under a cold sky...
 
 ### Comments
 
-> TODO
-  - line comment
-  - block comment
+Portions of the document can be marked as comments. When converting
+to other formats, commented text is ignored. There are two types of
+comments: line comments and block comments.
+
+Line comments
+- Begin with `##`.
+- End at the next line break.
+- There must be a whitespace before the `##` unless it is at the
+  beginning of the line.
+- Adding a backslash as a prefix `\##` will prevent it from being
+  recognized as a comment.
+
+Block comments
+- Begin with `###` and end at the next `###` (or at the end of the file).
+- Whitespace must occur before the opening `###` unless it is at the
+  beginning of the line.
+- Everything between the opening and closing comment tags is considered
+  part of the comment.
+- Adding a backslash as a prefix `\###` will prevent it from being
+  recognized as a block comment.
 
 ### Brackets
 
