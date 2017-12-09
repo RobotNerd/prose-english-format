@@ -158,8 +158,8 @@ to other formats, the bracketed block of text is ignored.
 
 ### Comment tokens
 
-Comment tokens are capitalized words that provide special metadata meaning
-to an author or editor. Tokens can be included in comments or in bracketed
+Comment tokens are capitalized words that provide special metadata for
+an author or editor. Tokens can be included in comments or in bracketed
 blocks.
 
 These tokens are recognized:
@@ -179,7 +179,18 @@ These tokens are recognized:
 
 ### Syntax highlighting
 
-> TODO
+Text editors that support prose should provide syntax highlighting. This is
+one of the key benefits of using prose, since syntax highlighting provides
+visual feedback to a writer about the structure of the document.
+
+The following elements should be uniquely highlighted:
+- Bracketed blocks
+- Comments
+- Comment tokens
+- Dialogue
+- Italicized and bolded text
+- Special names
+- Structure markup tags
 
 ### Folder structure
 
