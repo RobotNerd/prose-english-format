@@ -148,9 +148,13 @@ Block comments
 
 ### Brackets
 
-Special notes are placed inside a pair of brackets `[]`.
+Special notes are placed inside a pair of brackets `[]`. When converting
+to other formats, the bracketed block of text is ignored.
 
-> TODO
+- Begin with a `[`.
+- End at `]` or the end of the file if no closing brace is found.
+- Adding a backslash as a prefix will prevent the opening/closing brace
+  from being recognized as a bracketed block.
 
 ### Tags (TODO, FIXME, etc.)
 
