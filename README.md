@@ -11,6 +11,9 @@ here.
 
 > TODO plugins that implement prose-syntax-english
 
+> TODO
+  - add notes a/b the intended usage; use LaTeX if you need something fancy
+
 ### File extension
 
 Prose files are text-only with a file extension of `.prose`.
@@ -38,14 +41,87 @@ below describe how prose expects the writing to be structured.
 - The [Em Dash](https://en.wikipedia.org/wiki/Dash#Em_dash) is represented
   by two hyphens `--`.
 
-### Metadata
+### Structural markup
 
-> TODO
-  - title
-  - author
-  - section
-  - chapter
-  - section breaks
+Special markup can be used to define document structure.
+
+General rules:
+- Tags must be left-justified.
+- A tag must be on its own line.
+- Multiple tags can be grouped together on contiguous lines,
+  but they should be separated from paragraphs by a blank line.
+
+Structural tags:
+- Title
+  - The tag `Title:` followed by the title of the work.
+  - There can be only one title per project.
+  - The title should be in the very first document in the .compile
+    file (see the compiling section below).
+  - The title should be the first line of the file where it is placed.
+  - All text after the `Title:` until a line break is recognized
+    as the title of the project.
+- Chapter
+  - The tag `Chapter:` acts the same as `Title:` unless otherwise noted.
+  - There can be multiple chapter tags per project.
+  - Including a chapter title is optional. In other words, a line with
+    only the text `Chapter:` will act as a chapter break.
+  - The chapter tag must be the first line of the file where it is placed.
+- Author
+  - The tag `Author:` must be followed by the name of the writer.
+  - Author tags can be placed after title and chapter tags, but not with 
+    section tags.
+- Section
+  - The tag `Section:` acts the same as `Chapter:` unless otherwise noted.
+  - Sections occur within a chapter.
+  - Including a section name is optional.
+  - A chapter can contain multiple sections.
+  - At least one blank line must be placed before the section tag, and
+    at least one blank line must be placed after it.
+- Section break
+  - The tag `---` is a shortcut for a section tag without a title.
+
+An example title:
+
+```
+Title: A Windy Day
+Author: Mary Sue
+
+
+It was a bright and windy day. The sun shone down on the grassy field...
+```
+
+An example chapter:
+
+```
+Chapter: Leaves
+
+
+A gust of wind brushed past a pile of autumn leaves, kicking them up...
+```
+
+An example section, with a title:
+
+```
+...causing the doors to swing shut.
+
+
+Section: Inside
+
+
+The barren limbs of a sapling brushed against the glass, echoing in the...
+```
+
+Alternatively, a section break (no title) example:
+
+```
+...the fire burned out during the long, cold night.
+
+
+---
+
+
+The morning brought frost-covered grass on the lawn under a cold sky...
+```
 
 ### Comments
 
@@ -62,6 +138,12 @@ Special notes are placed inside a pair of brackets `[]`.
 ### Tags (TODO, FIXME, etc.)
 
 > TODO
+  - can be embedded in comments and in brackets
+  - keywords
+    - FIXME
+    - IMPORTANT
+    - NOTE
+    - TODO
 
 ### Special names
 
