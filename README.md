@@ -156,15 +156,17 @@ to other formats, the bracketed block of text is ignored.
 - Adding a backslash as a prefix will prevent the opening/closing brace
   from being recognized as a bracketed block.
 
-### Tags (TODO, FIXME, etc.)
+### Comment tokens
 
-> TODO
-  - can be embedded in comments and in brackets
-  - keywords
-    - FIXME
-    - IMPORTANT
-    - NOTE
-    - TODO
+Comment tokens are capitalized words that provide special metadata meaning
+to an author or editor. Tokens can be included in comments or in bracketed
+blocks.
+
+These tokens are recognized:
+- FIXME
+- IMPORTANT
+- NOTE
+- TODO
 
 ### Special names
 
