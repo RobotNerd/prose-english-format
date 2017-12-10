@@ -159,8 +159,8 @@ to other formats, the bracketed block of text is ignored.
 ### Comment tokens
 
 Comment tokens are capitalized words that provide special metadata for
-an author or editor. Tokens can be included in comments or in bracketed
-blocks.
+an author or editor. These tokens are recognized when placed in comments
+or bracketed blocks.
 
 These tokens are recognized:
 - FIXME
@@ -170,12 +170,65 @@ These tokens are recognized:
 
 ### Special names
 
-> TODO
-  - when available, prose editor plugins should automatically and
-    temporarily add everything in the .names file to the dictionary
-    for the editor. The purpose is to ensure that the spell-checker
-    recognizes these words.
-  - refer to folder structure section regarding location of .names file
+Each project can optionally have a file that defines names used in the
+project. These are names of characters, places, and things unique to the
+story.
+
+- Names are stored in a file called `.names`.
+- The `.names` file is stored in the root folder of the project.
+- There a four categories of names that can be added to the file:
+  - characters: Characters in the story.
+  - places: Locations in the story.
+  - things: Objects specific to the story.
+  - invalid: Characters, places, or things that should not be used
+    in the story. For example, a character name may have changed. By
+    placing the old name in this group, it can be highlighted as an
+    error in the document.
+- Name patterns are added under each category header.
+- The text editor must match words found in `.names` and use syntax
+  highlighting to distinguish them from the surrounding text.
+- A name is recognized as long as it isn't adjacent to a character
+  in A-Z, a-z, 0-9, or \_.
+- File format
+  - There should be no leading whitespace on any line in the file.
+  - Category headers
+    - Each category header must be placed in braces `[]`.
+    - Category names can be all uppercase, all lowercase, or the first
+      letter can be capitalized.
+    - The category name (in braces) must be on its only line.
+    - Only the category names listed above are valid categories.
+  - Name patterns
+    - Name patterns are listed after the category line.
+    - Name patterns are treated as regular expressions.
+- Spell checking
+  - When possible, patterns in `.names` should temporarily be added to
+    the dictionary of the text editor. This is to ensure that these
+    names are not shown as missspellings by built-in spell checkers.
+  - Spell checking of these patterns should only occur for prose
+    files in the same project as the `.names` file from which the
+    patterns were loaded.
+
+Example format of the `.names` file:
+
+```
+[characters]
+Eric|Eric Walters
+Jacob Mathers|Dr. Mathers|Mathers
+Sammy
+
+[places]
+Pleasantville( High School)?
+Willow Street
+
+[things]
+laser cannon
+time drive
+
+[invalid]
+Jeremy
+Sandra
+laser rifle
+```
 
 ### Syntax highlighting
 
