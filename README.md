@@ -282,6 +282,19 @@ names:
 #### Configuration: project compilation options
 
 > TODO
+  - compile options
+  - compile order; default to alphabetical if no order given
+  - conversion rules
+    - ignore comments and bracketed text
+    - handle italics and bolded blocks
+    - convert `--` to the em dash
+    - collapse whitespace to single space (i.e. allow newlines in paragraphs)
+  - conversion options
+    - ident paragraphs vs. leave blank line between paragraphs
+    - no indent on first paragraph of a section/chapter
+  - how to compile
+    - text editors can implement this functionality internally
+    - alternatively, link to github project with python scripts for compiling
 
 ### Syntax highlighting
 
@@ -300,25 +313,48 @@ The following elements should be uniquely highlighted:
 
 ### Folder structure
 
-> TODO
-  - ordering files for compilation
+Each story written with prose should be placed in its own directory.
+The configuration file must be placed in the root directory of the project.
+Prose files containing the actual narrative writing can be placed in the
+root directory or in subfolders.
+
+Here's a simple example with everything in the project root directory:
+
+```
+my-project/
+  config.yml
+  my-story-chp-1.prose
+  my-story-chp-2.prose
+  title.prose
+```
+
+A more complicated example may look like this:
+
+```
+my-project/
+  acknowledgements.prose
+  appendix.prose
+  config.json
+  part1/
+    chapter-01.prose
+    chapter-02.prose
+    chapter-03.prose
+  part2/
+    chapter-04.prose
+    chapter-05.prose
+    chapter-06.prose
+    chapter-07.prose
+  part3/
+    chapter-08.prose
+  title.prose
+```
+
+See the section on configuring compilation options for information on
+how to order files when compiling a document from prose files.
 
 ### Version control
 
 > TODO
-
-### Compiling files to target format
-
-> TODO
-  - .compile file
-  - conversion rules
-    - ignore comments and bracketed text
-    - handle italics and bolded blocks
-    - convert `--` to the em dash
-    - collapse whitespace to single space (i.e. allow newlines in paragraphs)
-  - conversion options
-    - ident paragraphs vs. leave blank line between paragraphs
-    - no indent on first paragraph of a section/chapter
 
 ### Best practices
 
