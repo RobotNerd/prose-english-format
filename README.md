@@ -68,7 +68,7 @@ Structural tags:
   - The chapter tag must be the first line of the file where it is placed.
 - Author
   - The tag `Author:` must be followed by the name of the writer.
-  - Author tags can be placed after title and chapter tags, but not with 
+  - Author tags can be placed after title and chapter tags, but not with
     section tags.
 - Section
   - The tag `Section:` acts the same as `Chapter:` unless otherwise noted.
@@ -168,67 +168,120 @@ These tokens are recognized:
 - NOTE
 - TODO
 
-### Special names
+### Configuration file
 
-Each project can optionally have a file that defines names used in the
-project. These are names of characters, places, and things unique to the
-story.
+Each prose project can optionally include a configuration file specific to
+that project. All of the following formats should be supported:
+- json
+- yaml
 
-- Names are stored in a file called `.names`.
-- The `.names` file is stored in the root folder of the project.
-- There a four categories of names that can be added to the file:
-  - characters: Characters in the story.
-  - places: Locations in the story.
-  - things: Objects specific to the story.
-  - invalid: Characters, places, or things that should not be used
-    in the story. For example, a character name may have changed. By
-    placing the old name in this group, it can be highlighted as an
-    error in the document.
-- Name patterns are added under each category header.
-- The text editor must match words found in `.names` and use syntax
-  highlighting to distinguish them from the surrounding text.
-- A name is recognized as long as it isn't adjacent to a character
-  in A-Z, a-z, 0-9, or \_.
-- File format
-  - There should be no leading whitespace on any line in the file.
-  - Category headers
-    - Each category header must be placed in braces `[]`.
-    - Category names can be all uppercase, all lowercase, or the first
-      letter can be capitalized.
-    - The category name (in braces) must be on its only line.
-    - Only the category names listed above are valid categories.
-  - Name patterns
-    - Name patterns are listed after the category line.
-    - Name patterns are treated as regular expressions.
+The configuration file should be named `config.*` with the appropriate file
+extension based on the file format (e.g. `config.json`, `config.yml`, etc).
+However, text editors that support prose should fallback to autodetecting
+the file format when possible.
+
+The configuration file can contain:
+- project compilation options
+- special names used in the project
+
+Available configuration options are detailed in the subsections below.
+
+> TODO reference the folder structure section below
+
+#### Configuration: special names
+
+Each project can optionally add names used in the project to the configuration
+file. These are the names of characters, places, and things unique to
+the story. Text editors can use syntax highlighting to make these names
+visually distinct from the surrounding text. This helps writers to
+quickly figure out when they misspell a character name or use the
+wrong name in a story.
+
+Rules
+- Names are stored in a `names` section of the config file.
+- There a four categories of names that can be added to the config file:
+  - Characters: Characters in the story.
+  - Places: Locations in the story.
+  - Things: Objects specific to the story.
+  - Invalid: Characters, places, or things that should not be used
+    in the story. For example, a character name may have changed during
+    the course of rewriting a story. By placing the old name in this group,
+    it can be highlighted as an error in the document.
+- A list of name patterns is added under each category header.
+- The text editor must match words in the names lists and use syntax
+  highlighting to distinguish these patterns from the surrounding text.
+  - When possible, the highlighting used for the groups of characters,
+    places, and things should be visually distinct from each other.
+    (For example, all character names might be bold, places underlined, and
+    things italicized.)
+  - When possible, items in the invalid group should be highlighted as errors.
+- A name is recognized as long as it isn't adjacent to any of these characters:
+  - A-Z
+  - a-z
+  - 0-9
+  - \_
+- Name patterns
+  - Name patterns are added as a list of values under the appropriate section.
+  - Each name pattern is treated as a regular expression.
 - Spell checking
-  - When possible, patterns in `.names` should temporarily be added to
+  - When possible, name patterns should temporarily be added to
     the dictionary of the text editor. This is to ensure that these
-    names are not shown as missspellings by built-in spell checkers.
+    names are not shown as misspellings by built-in spell checkers.
   - Spell checking of these patterns should only occur for prose
-    files in the same project as the `.names` file from which the
-    patterns were loaded.
+    files in the same project as the configuration file from which the
+    name patterns were loaded.
 
-Example format of the `.names` file:
+An example names section for `config.json`:
 
+```json
+{
+  "names": {
+    "characters": [
+      "Eric|Eric Walters",
+      "Jacob Mathers|Dr. Mathers|Mathers",
+      "Sammy"
+    ],
+    "places": [
+      "Pleasantville( High School)?,"
+      "Willow Street"
+    ],
+    "things": [
+      "laser cannon,"
+      "time drive"
+    ],
+    "invalid": [
+      "Jeremy",
+      "Sandra",
+      "laser rifle"
+    ]
+  }
+}
 ```
-[characters]
-Eric|Eric Walters
-Jacob Mathers|Dr. Mathers|Mathers
-Sammy
 
-[places]
-Pleasantville( High School)?
-Willow Street
+An example names section for `config.yml`:
 
-[things]
-laser cannon
-time drive
-
-[invalid]
-Jeremy
-Sandra
-laser rifle
+```yaml
+---
+names:
+  characters:
+    - Eric|Eric Walters
+    - Jacob Mathers|Dr. Mathers|Mathers
+    - Sammy
+  places:
+    - Pleasantville( High School)?
+    - Willow Street
+  things:
+    - laser cannon
+    - time drive
+  invalid:
+    - Jeremy
+    - Sandra
+    - laser rifle
 ```
+
+#### Configuration: project compilation options
+
+> TODO
 
 ### Syntax highlighting
 
