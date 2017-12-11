@@ -316,15 +316,62 @@ compile:
 
 ##### Conversion options
 
+These conversion rules are used when compiling prose to another
+document format:
+- Comments and bracketed text blocks are ignored.
+- The `*` and `__` for italics and bold text are removed, and the text
+  is converted to italics or bold in the output document.
+- `--` is converted to the em dash (U+2014) character.
+- All empty lines between paragraphs are removed.
+- All contiguous whitespace in a paragraph (up until the first completely
+  blank line) are collapsed into a single space.
+- The first line of a paragraph is indented with a tab.
+  - The first paragraph of a chapter or a section is not indented with a tab.
+  - Note: The title tag and chapter tag are treated the same for this
+    feature. This ensure that short stories, which have a title but no
+    chapters, will be treated the same.
+
+The following rules are configurable:
+- `compile.paragraph.tabFirstParagraph` controls if and when a tab is
+  added to the first line of a paragraph. Options are:
+  - __never__: (default) Do not use a tab in front of the first paragraph
+    in a chapter or story.
+  - __always__: Always insert a tab in front of the first paragraph for
+    chapters and stories.
+  - __chapter__: Insert a tab in front of the first paragraph only for
+    chapters.
+  - __section__: Insert a tab in front of the first paragraph only for
+    sections.
+  - Example:
+    ```
+    ---
+    compile:
+      paragraph:
+        tabFirstParagraph: always
+    ```
+- `compile.paragraph.removeBlankLines` controls whether blank lines between
+  paragraphs are removed.
+  - __always__: (default) Remove blank lines between paragraphs.
+  - __never__: Leave blank lines to separate paragraphs.
+  - Example:
+    ```
+    ---
+    compile:
+      paragraph:
+        removeBlankLines: never
+    ```
+- `compile.spacing` controls the line spacing of the output document.
+  - __single__: (default) Use single space.
+  - __double__: Use double spacing.
+  - Example:
+    ```
+    compile:
+      spacing: single
+    ```
+
 > TODO
-  - conversion rules
-    - ignore comments and bracketed text
-    - handle italics and bolded blocks
-    - convert `--` to the em dash
-    - collapse whitespace to single space (i.e. allow newlines in paragraphs)
   - conversion options
-    - ident paragraphs vs. leave blank line between paragraphs
-    - no indent on first paragraph of a section/chapter
+    - include "title", "chapter", "section" labels
 
 ### Compiling prose
 
@@ -332,6 +379,12 @@ compile:
   - how to compile
     - text editors can implement this functionality internally
     - alternatively, link to github project with python scripts for compiling
+  - target formats
+    - (?) ebook formats
+    - Microsoft word
+    - ods
+    - pdf
+    - text
 
 ### Syntax highlighting
 
