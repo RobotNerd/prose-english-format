@@ -354,7 +354,18 @@ how to order files when compiling a document from prose files.
 
 ### Version control
 
-> TODO
+It is highly recommended that all prose projects be placed under
+version control. The prose syntax project uses [git](https://git-scm.com/),
+but any alternative version control system can be used as well.
+Commits should be performed frequently while writing.
+
+At the minimum, this provides psychological safety for a writer. New
+portions of the story can be added, rewritten, or deleted without fear
+of losing any work. Old version can always be retrieved from the
+repository history.
+
+> TODO more advanced usage; collaboration between author and editor;
+  using review tools like gerrit
 
 ### Best practices
 
