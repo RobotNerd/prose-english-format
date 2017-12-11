@@ -369,11 +369,76 @@ repository history.
 
 ### Best practices
 
-> TODO
-  - editor should soft wrap lines
-    - line breaks inside a paragraph make it harder when editing
-  - use only one blank line after every paragraph
-  - enable spell-checking in your editor
+The following are suggested best practices for using prose:
+- Text editors should be configured to line wrap.
+  - Don't manually add line breaks within a paragraph.
+  - Line wrapping makes it much easier to edit text in paragraph form.
+- Enable spell checking in the text editor.
+- Leave __two__ blank lines after title and chapter structural markup blocks.
+  ```
+  Title: My Story
+  By: Mary Sue
+
+
+  It was a dark and story night...
+  ```
+- Leave only __one__ blank line between paragraphs.
+- Leave __two__ empty lines above and __two__ empty lines below a
+  section break.
+  ```
+  ...and that's the last I heard from him.
+
+
+  ---
+
+
+  That night, we walked down the gravel road under the light of the...
+  ```
+- Leave __one__ space after the double hash of a line comment, unless it
+  starts at the beginning of the line.
+  ```
+  ## This is a comment.
+  This text is part of the story. ## And this part is a comment.
+  ```
+- Leave __one__ space before the opening and closing block comments, unless
+  they start at the beginning of the line.
+  ```
+  This paragraph ### this comment isn't part of the paragraph ### has an
+  embedded block comment.
+
+  ###
+  This entire section is commented out.
+  ###
+  ```
+- Brackets vs. comments
+  - Use comments to cut out text that you don't want as part of the story
+    but you aren't ready to delete it.
+  - Use brackets for notes written by the author or editor. In other words,
+    these take the place of writing notes in red ink on a printout of
+    a story.
+- Comment tokens should be added to bracket blocks or comments as needed.
+  - When editing, search for comment tokens in prose files to find specific
+    areas that still need to be worked on.
+  - Suggested use of comment tokens:
+    - Use `TODO` for portions of a story that haven't yet been written.
+    - Use `FIXME` for problem areas that need to be rewritten.
+    - Use `IMPORTANT` to flag areas that the writer must pay attention to (e.g.
+      a part of the story that will need foreshadowing earlier in the story).
+    - Use `NOTE` for background or supporting information that the author
+      or editor will need when working on the story.
+  - Examples
+    ```
+    ## TODO need to write an action sequence here
+
+    [FIXME The character dialogue here is sloppy.]
+
+    ###
+      IMPORTANT This hasn't been setup at all. Need to foreshadow it
+      in Act 1.
+    ###
+
+    ## NOTE I'm pretty happy with the way this section turned out. :)
+    ```
 
 ### Acknowledgements
 
