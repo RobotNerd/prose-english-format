@@ -281,9 +281,42 @@ names:
 
 #### Configuration: project compilation options
 
+Prose documents are compiled to other formats for publication. This
+section describes the compilation options that can be included in
+the configuration file. All of these options can be placed in the
+configuration file under the `compile` section.
+
+##### File order
+
+An optional `order` section can be included to define a specific
+order in which prose files can be added to the project. This is a list of
+file paths relative to the project root. If a file exists in the
+project directory but isn't included in the order list, then it will
+not be added to the compiled output.
+
+If no `order` field exists in the config file, then all prose files
+found in the project and its subfolders will be compiled in alphabetical
+order. This alphabetical order takes into account the full path
+from the project root to the file. A subdirectory can be included, and
+all files under that subdirectory will be recursively added in
+alphabetical order.
+
+Here is an example portion of `config.yml`:
+
+```
+---
+compile:
+  order:
+    - title.prose
+    - chapter01/
+    - chapter02/
+    - epilogue.prose
+    - acknowledgements.prose
+```
+
+##### Conversion options
+
 > TODO
-  - compile options
-  - compile order; default to alphabetical if no order given
   - conversion rules
     - ignore comments and bracketed text
     - handle italics and bolded blocks
@@ -292,6 +325,10 @@ names:
   - conversion options
     - ident paragraphs vs. leave blank line between paragraphs
     - no indent on first paragraph of a section/chapter
+
+### Compiling prose
+
+> TODO
   - how to compile
     - text editors can implement this functionality internally
     - alternatively, link to github project with python scripts for compiling
