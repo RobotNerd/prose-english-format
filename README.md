@@ -3,7 +3,8 @@
 The Prose syntax for the English language is a way to bring aspects of
 programming to the process of writing literature. The main feature of is
 syntax highlighting, which helps writers visualize the grammatical structure
-of the text. The goal is to catch some common mistakes while writing.
+of the text. The goal is to quickly catch some common mistakes made by
+writers while writing.
 
 If you write in another language, please take the ideas here and
 adapt them to your language of choice! Related projects will be included
@@ -29,8 +30,11 @@ below describe how prose expects the writing to be structured.
 - Paragraphs are left-justified, i.e. no whitespace at the
   beginning of the line.
   - Any proceeding whitespace on a line turns a paragraph into a block quote.
-  - All lines of a block quote must be indented by the same amount
-    of whitespace.
+  - All lines of a block quote should be indented by the same amount
+    of whitespace. However, if there is not a blank line separating multiple
+    indented lines, those lines will be considered part of the same paragraph.
+    In this case, the indentation level of the first line of the paragraph
+    defines the indentation of the block quote.
   - Multiple levels of embedded block quotes are allowed.
 - Dialogue is placed in double quotes `"`.
   - A closing double quote closes the dialogue block.
@@ -44,7 +48,7 @@ below describe how prose expects the writing to be structured.
   - If no closing `__` is found, the bold block ends at the next
     blank line.
 - The [Em Dash](https://en.wikipedia.org/wiki/Dash#Em_dash) is represented
-  by two hyphens `--`.
+  by two contiguous hyphens `--` within a paragraph.
 
 ### Structural markup
 
@@ -55,6 +59,11 @@ General rules:
 - A tag must be on its own line.
 - Multiple tags can be grouped together on contiguous lines,
   but they should be separated from paragraphs by a blank line.
+
+> TODO Consider allowing multiple titles per project. For example,
+       an anthology of short stories would have a title and author
+       for each story. Be smart enough to treat the title tag the
+       same as a chapter in this scenario.
 
 Structural tags:
 - Title
@@ -137,19 +146,20 @@ comments: line comments and block comments.
 Line comments:
 - Begin with `##`.
 - End at the next line break.
-- There must be a whitespace before the `##` unless it is at the
+- There must be whitespace before the `##` unless it is at the
   beginning of the line.
-- Adding a backslash as a prefix `\##` will prevent it from being
-  recognized as a comment.
+- Adding a backslash as a prefix `\##` will prevent the double hash from
+  being recognized as a comment.
 
 Block comments:
 - Begin with `###` and end at the next `###` (or at the end of the file).
 - Whitespace must occur before the opening `###` unless it is at the
   beginning of the line.
 - Everything between the opening and closing comment tags is considered
-  part of the comment up to the end of the file.
-- Adding a backslash as a prefix `\###` will prevent it from being
-  recognized as a block comment.
+  part of the comment. If no matching `###` is found, the comment block
+  extends to the end of the file.
+- Adding a backslash as a prefix `\###` will prevent the triple hash from
+  being recognized as the beginning or ending of a block comment.
 
 ### Brackets
 
@@ -182,9 +192,9 @@ that project. It is located in the project root (see
 - yaml
 
 The configuration file is named `config.*` with the appropriate file
-extension based on the file format (e.g. `config.json`, `config.yml`, etc).
-Text editors that support prose should attempt to autodetect the file format
-when possible, regardless of file extension.
+extension based on the file format (e.g. `config.json` or `config.yml`).
+Text editors and conversion tools that support prose should attempt to
+autodetect the file format when possible, regardless of file extension.
 
 The configuration file can contain:
 - project compilation options
@@ -222,20 +232,26 @@ Rules
 - Name patterns
   - Name patterns are added as a list of values under the appropriate section.
   - Each name pattern is treated as a regular expression.
-  - A name pattern is recognized if it isn't adjacent to any of these
-    characters:
+  - A name pattern is matched with text in a prose document as long as that
+    portion of the text is not adjacent to any of these characters:
     - A-Z
     - a-z
     - 0-9
     - \_
+    - Example:
+      - pattern: Chuck
+      - two matches: She looked at Chuck and said, "Hey Chuck!"
+      - no matches: He chucked it over the fence and yelled, "Chucks!"
 - Spell checking
   - When possible, name patterns should temporarily be added to
     the dictionary of the text editor. This is to ensure that these
     names are not shown as misspellings by built-in spell checkers.
-    This is use, for example, for invented names in fictional stories.
+    This is useful, for example, for invented names in fictional stories.
   - Spell checking of these patterns should only occur for prose
     files in the same project as the configuration file from which the
-    name patterns were loaded.
+    name patterns were loaded. The names unique to one story should not
+    be permanently added to the spelling dictionary so they don't bleed
+    over into other projects where those names might not be valid.
 
 An example names section for `config.json`:
 
@@ -325,17 +341,20 @@ compile:
 ##### Conversion options
 
 These conversion rules are used when compiling prose to another
-document format:
+document format. If the document type of the output document does not
+support a feature (e.g. bold, italic text), the prose-specific markup
+characters are removed but no additional changes are made.
+
 - Comments and bracketed text blocks are ignored.
 - The `*` and `__` for italics and bold text are removed, and the text
-  is converted to italics or bold in the output document.
+  between is converted to italics or bold in the output document.
 - `--` is converted to the em dash (U+2014) character.
 - All empty lines between paragraphs are removed.
 - All contiguous whitespace in a paragraph (up until the first completely
   blank line) is collapsed into a single space.
 - The first line of a paragraph is indented with a tab.
   - The first line of the first paragraph of a chapter or a section is not
-    indented with a tab.
+    indented with a tab by default. This behavior is configurable.
   - The title tag and chapter tag are treated the same for this
     feature. This ensures that short stories, which have a title but no
     chapters, will be treated the same.
@@ -418,7 +437,7 @@ The configuration file must be placed in the root directory of the project.
 Prose files containing the actual narrative writing can be placed in the
 root directory or in subfolders.
 
-Here's a simple example with everything in the project root directory:
+Here is a simple example with everything in the project root directory:
 
 ```
 my-project/
@@ -449,14 +468,15 @@ my-project/
   title.prose
 ```
 
-See [Configuration: project compilation options](#configuration-project-compilation-options) for information on
-how to order files when compiling a document from prose files.
+See [Configuration: project compilation options](#configuration-project-compilation-options)
+for information on how to order files when compiling a document from
+prose files.
 
 ### Version control
 
-It is highly recommended that all prose projects be placed under
+It is strongly recommended that all prose projects be placed under
 version control. The prose syntax project uses [git](https://git-scm.com/),
-but any alternative version control system can be used as well.
+but any alternative version control system can be used.
 Commits should be performed frequently while writing.
 
 At the minimum, this provides psychological safety for a writer. New
@@ -519,14 +539,15 @@ The following are suggested best practices for using prose:
   - Use brackets for notes written by the author or editor. In other words,
     these take the place of writing notes in red ink on a printout of
     a story.
-- Comment tokens should be added to bracket blocks or comments as needed.
+- Comment tokens should be added to bracket blocks or comment blocks as needed.
   - When editing, search for comment tokens in prose files to find specific
     areas that still need to be worked on.
   - Suggested use of comment tokens:
     - Use `TODO` for portions of a story that haven't yet been written.
     - Use `FIXME` for problem areas that need to be rewritten.
-    - Use `IMPORTANT` to flag areas that the writer must pay attention to (e.g.
-      a part of the story that will need foreshadowing earlier in the story).
+    - Use `IMPORTANT` to flag areas that the writer must pay attention to
+      (e.g. a part of the story that will need to be foreshadowed earlier
+      in the story).
     - Use `NOTE` for background or supporting information that the author
       or editor will need when working on the story.
   - Examples
