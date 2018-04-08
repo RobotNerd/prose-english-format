@@ -10,7 +10,11 @@ If you write in another language, please take the ideas here and
 adapt them to your language of choice! Related projects will be included
 here.
 
-> TODO plugins that implement prose-syntax-english
+These editor plugins provide support for prose documents:
+- vim: https://github.com/RobotNerd/prose-english-vim
+
+If your favorite editor does not have a plugin that supports .prose,
+please write one and it will be linked here!
 
 > TODO
   - add notes a/b the intended usage; use LaTeX if you need something fancy
