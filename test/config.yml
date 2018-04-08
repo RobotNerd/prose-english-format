@@ -1,0 +1,16 @@
+---
+names:
+  characters:
+    - Eric|Eric Walters
+    - Jacob Mathers|Dr. Mathers|Mathers
+    - Sammy
+  places:
+    - Pleasantville( High School)?
+    - Willow Street
+  things:
+    - laser cannon
+    - time drive
+  invalid:
+    - Jeremy
+    - Sandra
+    - laser rifle

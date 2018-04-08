@@ -1,0 +1,118 @@
+Title: Prose Test File
+Author: Marshall Bowles
+
+
+This is a test file used to verify prose syntax highlighting. The Title, Author, Chapter, and Section tags used throughout this document should be highlighted with the same color.
+
+
+Chapter: Test chapter title
+Section: quoted strings
+
+
+"Everything between the double-quotes should be highlighted as dialogue," but not the text outside of the double quotes.
+
+"This entire paragraph should be highlighted as dialogue.
+
+But this paragraph is not highlighted as dialogue, even though the previous paragraph did not include a closing double quote.
+
+
+Section: bold and italic
+
+
+Text between *asterisks* should be highlighted because it will be converted to *italics*. Text been __double underscores__ will be converted to __bold__.
+
+If a closing asterisk *isn't included
+
+The following paragraph will still be regular text.
+
+If a closing double-underscore __isn't included
+
+The following paragraph will still be regular text.
+
+"Within a quoted string, *italics* and __bolded__ text is highlighted."
+
+
+Section: section break shortcut
+
+
+The triple-dash section break shortcut should be highlighted in the same manner as the Title, Author, and Section items.
+
+
+---
+
+
+Section: comments
+
+
+The text after the double hashes ## should be highlighted as a comment.
+
+## This entire line should be highlighted as a comment.
+
+###
+All of these lines
+Should be highlighted
+As comments.
+
+Even if they are in a new paragraph.
+###
+
+The portions between the triple hashes ### should be highlighted as a comment ### but this portion should be normal text.
+
+The following double hash is escaped \## and won't be considered a comment block.
+
+The following triple hash is escaped \### and won't be considered a comment block.
+
+The following block comment has ### and embedded triple hash \### that does not end the block comment, but this one ### does.
+
+
+Section: brackets
+
+
+Portions of text [in brackets] are highlighted uniquely.
+
+Bracketed text [
+  can span
+  multiple lines
+with any indentation
+] and continue as normal text afterwards.
+
+[Bracketed text can take up the entire line.]
+
+[
+  It can also take up multiple lines.
+  Like this example.
+]
+
+The following opening bracket is escaped \[ and won't start a bracket block.
+
+The following bracket block [contains and escaped closing bracket \] that won't end the block but this one] will.
+
+
+Section: comment tokens
+
+
+## These words should be highlighted: FIXME, IMPORTANT, NOTE, TODO
+
+### These words should be highlighted: FIXME, IMPORTANT, NOTE, TODO ###
+
+[These words should be highlighted: FIXME, IMPORTANT, NOTE, TODO]
+
+However, these words should not be highlighted when in regular text, like FIXME, IMPORTANT, NOTE, TODO.
+
+They should also not be highlighted if they are adjacent to other alphabetic characters or underscores, ## like aTODO, TODOS, FIXMEnow, IMPORTANTLY, NOTEs, _TODO_.
+
+
+Section: highlighting names
+
+
+In the accompanying config.yml file, multiple names are defined.
+
+The names Eric Walters, Jacob Mathers, and Sammy should be highlighted as character names.
+
+The names Pleasantville High School and Willow Street should be highlighted as places.
+
+The names laser cannon and time drive should be highlighted as things.
+
+The names Jeremy, Sandra, and laser rifle should be highlighted as errors.
+
+The names and this paragraph should not be highlighted, because they either do no match the patterns in the config file, they are misspelled, or they are adjacent to other alphanumeric characters. Erik, Erica, Methers, Samy, Pleasantvile, Willow Road, lazer cannon, time driver.
