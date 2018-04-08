@@ -7,17 +7,16 @@ of the text. The goal is to quickly catch some common mistakes made by
 writers while writing.
 
 If you write in another language, please take the ideas here and
-adapt them to your language of choice! Related projects will be included
+adapt them to your language of choice. Related projects will be included
 here.
 
 These editor plugins provide support for prose documents:
 - vim: https://github.com/RobotNerd/prose-english-vim
 
 If your favorite editor does not have a plugin that supports .prose,
-please write one and it will be linked here!
+please write one and it will be linked here.
 
-> TODO
-  - add notes a/b the intended usage; use LaTeX if you need something fancy
+> TODO add notes a/b the intended usage; use LaTeX if you need something fancy
 
 ### File extension
 
@@ -65,9 +64,9 @@ General rules:
   but they should be separated from paragraphs by a blank line.
 
 > TODO Consider allowing multiple titles per project. For example,
-       an anthology of short stories would have a title and author
-       for each story. Be smart enough to treat the title tag the
-       same as a chapter in this scenario.
+>      an anthology of short stories would have a title and author
+>      for each story. Be smart enough to treat the title tag the
+>      same as a chapter in this scenario.
 
 Structural tags:
 - Title
@@ -403,21 +402,21 @@ The following rules are configurable:
     ```
 
 > TODO
-  - conversion options
-    - include "title", "chapter", "section" labels
+>  - conversion options
+>    - include "title", "chapter", "section" labels
 
 ### Compiling prose
 
 > TODO
-  - how to compile
-    - text editors can implement this functionality internally
-    - alternatively, link to github project with python scripts for compiling
-  - target formats
-    - (?) ebook formats
-    - Microsoft word
-    - ods
-    - pdf
-    - text
+>  - how to compile
+>    - text editors can implement this functionality internally
+>    - alternatively, link to github project with python scripts for compiling
+>  - target formats
+>    - (?) ebook formats
+>    - Microsoft word
+>    - ods
+>    - pdf
+>    - text
 
 ### Syntax highlighting
 
@@ -489,7 +488,7 @@ of losing any work. Old version can always be retrieved from the
 repository history.
 
 > TODO more advanced usage; collaboration between author and editor;
-  using review tools like gerrit
+> using review tools like gerrit
 
 ### Best practices
 
