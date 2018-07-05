@@ -115,4 +115,4 @@ The names laser cannon and time drive should be highlighted as things.
 
 The names Jeremy, Sandra, and laser rifle should be highlighted as errors.
 
-The names and this paragraph should not be highlighted, because they either do no match the patterns in the config file, they are misspelled, or they are adjacent to other alphanumeric characters. Erik, Erica, Methers, Samy, Pleasantvile, Willow Road, lazer cannon, time driver.
+The names and this paragraph should not be highlighted, because they either do no match the patterns in the config file, they are misspelled, or they are adjacent to other alphanumeric characters. Erik, Erica, EEric, Methers, Samy, Pleasantvile, Willow Road, lazer cannon, time driver.

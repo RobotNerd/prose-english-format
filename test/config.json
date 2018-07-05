@@ -1,0 +1,23 @@
+{
+  "names": {
+    "characters": [
+      "Eric Walters|Eric",
+      "Jacob Mathers|Jacob|Mathers|Dr. Mathers",
+      "Sammy"
+    ],
+    "places": [
+      "Pleasantville( High School)?",
+      "Willow Street"
+    ],
+    "things": [
+      "laser cannon",
+      "time drive"
+    ],
+    "invalid": [
+      "Jeremy",
+      "Sandra",
+      "laser rifle"
+    ]
+  }
+}
+
