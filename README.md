@@ -18,11 +18,30 @@ please write one and it will be linked here.
 
 > TODO add notes a/b the intended usage; use LaTeX if you need something fancy
 
-### File extension
+## Table of Contents
+
+- [File extension](#file-extension)
+- [Grammar](#grammar)
+- [Structural Markup](#structural-markup)
+- [Comments](#comments)
+- [Brackets](#brackets)
+- [Comment tokens](#comment-tokens)
+- [Configuration file](#configuration-file)
+  - [Configuration: special names](#configuration-special-names)
+  - [Configuration: project compilation options](#configuration-project-compilation-options)
+    - [File order](#file-order)
+    - [Conversion options](#conversion-options)
+- [Compiling Prose](#compiling-prose)
+- [Syntax highlighting](#syntax-highlighting)
+- [Folder Structure](#folder-structure)
+- [Version control](#version-control)
+- [Best practices](#best-practices)
+
+## File extension
 
 Prose files are text-only and use the file extension `.prose`.
 
-### Grammar
+## Grammar
 
 Prose documents are structured as a series of paragraphs. The rules
 below describe how prose expects the writing to be structured.
@@ -53,7 +72,7 @@ below describe how prose expects the writing to be structured.
 - The [Em Dash](https://en.wikipedia.org/wiki/Dash#Em_dash) is represented
   by two contiguous hyphens `--` within a paragraph.
 
-### Structural markup
+## Structural markup
 
 Special markup tags can be used to define document structure.
 
@@ -140,7 +159,7 @@ Alternatively, a section break (no title) example:
 The morning brought frost-covered grass on the lawn under a cold sky...
 ```
 
-### Comments
+## Comments
 
 Portions of the document can be marked as comments. When converting
 to other formats, commented text is ignored. There are two types of
@@ -164,7 +183,7 @@ Block comments:
 - Adding a backslash as a prefix `\###` will prevent the triple hash from
   being recognized as the beginning or ending of a block comment.
 
-### Brackets
+## Brackets
 
 Special notes are placed inside a pair of brackets `[]`. When converting
 to other formats, the bracketed block of text is ignored.
@@ -174,7 +193,7 @@ to other formats, the bracketed block of text is ignored.
 - Adding a backslash as a prefix will prevent the opening/closing bracket
   from being recognized as a bracketed block.
 
-### Comment tokens
+## Comment tokens
 
 Comment tokens are capitalized words that provide special metadata for
 an author or editor. They are recognized when placed in comments
@@ -186,7 +205,7 @@ These tokens are recognized:
 - NOTE
 - TODO
 
-### Configuration file
+## Configuration file
 
 Each prose project can optionally include a configuration file specific to
 that project. It is located in the project root (see
@@ -205,7 +224,7 @@ The configuration file can contain:
 
 Available configuration options are detailed in the subsections below.
 
-#### Configuration: special names
+### Configuration: special names
 
 Each project can optionally add names used in the project to the configuration
 file. These are the names of characters, places, and things unique to
@@ -304,7 +323,7 @@ names:
     - laser rifle
 ```
 
-#### Configuration: project compilation options
+### Configuration: project compilation options
 
 Prose documents are compiled to other formats for publication. This
 section describes the compilation options that can be included in
@@ -313,7 +332,7 @@ configuration file under the `compile` section.
 
 See [Compiling prose](#compiling-prose) for how to compile projects.
 
-##### File order
+#### File order
 
 An optional `order` section can be included to define a specific
 order in which prose files are added to the project. This is a list of
@@ -341,7 +360,7 @@ compile:
     - acknowledgements.prose
 ```
 
-##### Conversion options
+#### Conversion options
 
 These conversion rules are used when compiling prose to another
 document format. If the document type of the output document does not
@@ -404,8 +423,9 @@ The following rules are configurable:
 > TODO
 >  - conversion options
 >    - include "title", "chapter", "section" labels
+>    - line break options; before chapter, section, etc.; manual
 
-### Compiling prose
+## Compiling prose
 
 > TODO
 >  - how to compile
@@ -418,7 +438,7 @@ The following rules are configurable:
 >    - pdf
 >    - text
 
-### Syntax highlighting
+## Syntax highlighting
 
 Text editors that support prose should provide syntax highlighting. This is
 one of the key benefits of using prose, since syntax highlighting provides
@@ -433,7 +453,7 @@ The following elements should be uniquely highlighted:
 - Special names
 - Structure markup tags
 
-### Folder structure
+## Folder structure
 
 Each story written with prose should be placed in its own directory.
 The configuration file must be placed in the root directory of the project.
@@ -475,7 +495,7 @@ See [Configuration: project compilation options](#configuration-project-compilat
 for information on how to order files when compiling a document from
 prose files.
 
-### Version control
+## Version control
 
 It is strongly recommended that all prose projects be placed under
 version control. The prose syntax project uses [git](https://git-scm.com/),
@@ -490,7 +510,7 @@ repository history.
 > TODO more advanced usage; collaboration between author and editor;
 > using review tools like gerrit
 
-### Best practices
+## Best practices
 
 The following are suggested best practices for using prose:
 - Text editors should be configured to line wrap.
@@ -567,7 +587,7 @@ The following are suggested best practices for using prose:
     ## NOTE I'm pretty happy with the way this section turned out. :)
     ```
 
-### Acknowledgements
+## Acknowledgements
 
 - [Fountain](https://fountain.io/)
 - [GitHub Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
