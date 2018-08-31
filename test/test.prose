@@ -5,8 +5,8 @@ Author: Marshall Bowles
 This is a test file used to verify prose syntax highlighting. The Title, Author, Chapter, and Section tags used throughout this document should be highlighted with the same color.
 
 
-Chapter: Test chapter title
-Section: quoted strings
+Chapter: Test chapter name
+Section: Quoted strings
 
 
 "Everything between the double-quotes should be highlighted as dialogue," but not the text outside of the double quotes.
@@ -116,3 +116,9 @@ The names laser cannon and time drive should be highlighted as things.
 The names Jeremy, Sandra, and laser rifle should be highlighted as errors.
 
 The names and this paragraph should not be highlighted, because they either do no match the patterns in the config file, they are misspelled, or they are adjacent to other alphanumeric characters. Erik, Erica, EEric, Methers, Samy, Pleasantvile, Willow Road, lazer cannon, time driver.
+
+Names are highlighted inside double quotes, "Eric, Willow Street, laser cannon, and Sandra."
+
+Names are highlighted inside italics blocks *Eric, Willow Street, laser cannon, and Sandra*.
+
+Combining the two above, "Names in italics in quotes like *Eric, Willow Street, laser cannon, and Sandra* should be highlighted as well."
