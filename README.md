@@ -382,35 +382,62 @@ characters are removed but no additional changes are made.
     chapters, will be treated the same.
 
 The following rules are configurable:
-- `compile.paragraph.tabFirstParagraph` controls if and when a tab is
-  added to the first line of a paragraph. Options are:
-  - __never__: (default) Do not use a tab in front of the first paragraph
-    in a chapter or story.
-  - __always__: Always insert a tab in front of the first paragraph for
-    chapters and stories.
-  - __chapter__: Insert a tab in front of the first paragraph only for
-    chapters.
-  - __section__: Insert a tab in front of the first paragraph only for
-    sections.
+- `compile.paragraph.mode` controls the paragraph formatting of the entire
+  document.
+  - __justified__: Each paragraph is left justified. A single blank line
+    separates one paragraph from the next.
+  - __prose__: (default) A tab is inserted to indent the first line of
+    every paragraph. (See the `tabFirst` settings for additional info). Blank
+    lines between paragraphs are removed.
+
+  > NOTE: The `compile.paragraph.tabFirst` settings below are used to control
+  > whether a tab is inserted for the first paragraph in the story,
+  > per chapter, and per section. Written prose is often formatted where the
+  > first paragraph is not indented but all subsequent ones are.
+
+- `compile.paragraph.tabFirst.title`: If true, insert a tab at the beginning
+  of the first paragraph in the document.
+  - Values can be __true__ or __false__.
+  - Default __false__.
+  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+- `compile.paragraph.tabFirst.chapter`: If true, a tab is inserted
+  at the beginning of the first paragraph of a chapter.
+  - Values can be __true__ or __false__.
+  - Default __false__.
+  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+- `compile.paragraph.tabFirst.secetion` If true, a tab is inserted
+  at the beginning of the first paragraph of a section.
+  - Values can be __true__ or __false__.
+  - Default __false__.
+  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+
+- Mode and tabs example:
+  ```
+  ---
+  compile:
+    paragraph:
+      mode: prose
+      tabFirst:
+        title: true
+        chapter: false
+        section: false
+  ```
+
+- `compile.paragraph.removeBlankLines`: If false, blank lines between
+  paragraphs are not removed.
+  - Values can be __true__ or __false__.
+  - Default __true__.
+  - Only applicable if `compile.paragraph.mode` is set to __prose__.
   - Example:
     ```
     ---
     compile:
       paragraph:
-        tabFirstParagraph: always
+        mode: prose
+        removeBlankLines: false
     ```
-- `compile.paragraph.removeBlankLines` controls whether blank lines between
-  paragraphs are removed.
-  - __always__: (default) Remove blank lines between paragraphs.
-  - __never__: Leave blank lines to separate paragraphs.
-  - Example:
-    ```
-    ---
-    compile:
-      paragraph:
-        removeBlankLines: never
-    ```
-- `compile.spacing` controls the line spacing of the output document.
+
+- `compile.spacing`: Define the line spacing of the output document.
   - __single__: (default) Use single space.
   - __single+__: Use 1.5 spacing.
   - __double__: Use double spacing.
