@@ -57,7 +57,10 @@ below describe how prose expects the writing to be structured.
     indented lines, those lines will be considered part of the same paragraph.
     In this case, the indentation level of the first line of the paragraph
     defines the indentation of the block quote.
-  - Multiple levels of embedded block quotes are allowed.
+  - Multiple levels of embedded block quotes are allowed. To qualify as
+    a deeper level block, the amount of leading whitespace on the first line
+    of the indented paragraph must be greater than that of the previous
+    paragraph.
 - Dialogue is placed in double quotes `"`.
   - A closing double quote closes the dialogue block.
   - If no closing quote is found, the dialogue block ends at a blank line.
