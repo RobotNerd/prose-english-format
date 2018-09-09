@@ -61,6 +61,10 @@ below describe how prose expects the writing to be structured.
     a deeper level block, the amount of leading whitespace on the first line
     of the indented paragraph must be greater than that of the previous
     paragraph.
+    - If a subsequent paragraph is indented with fewer leading whitespace
+      characters than the previous block quote, then that paragraph is
+      un-indented by one level.
+    - A block quote cannot be un-indented past the left margin.
 - Dialogue is placed in double quotes `"`.
   - A closing double quote closes the dialogue block.
   - If no closing quote is found, the dialogue block ends at a blank line.
