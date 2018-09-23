@@ -98,7 +98,7 @@ Structural tags:
 - Title
   - The tag `Title:` followed by the title of the work.
   - There can be only one title per project.
-  - The title should be in the very first document in the .compile
+  - The title should be in the very first document in the config
     file (see [Configuration: project compilation options](#configuration-project-compilation-options)).
   - The title should be on the first line of the file in which it is located.
   - All text between the `Title:` tag and a line break is recognized
