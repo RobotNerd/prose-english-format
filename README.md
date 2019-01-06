@@ -1,6 +1,6 @@
-# Prose Syntax - English
+# Proze Syntax - English
 
-The Prose syntax for the English language is a way to bring aspects of
+The Proze syntax for the English language is a way to bring aspects of
 programming to the process of writing literature. The main feature of is
 syntax highlighting, which helps writers visualize the grammatical structure
 of the text. The goal is to quickly catch some common mistakes made by
@@ -10,10 +10,10 @@ If you write in another language, please take the ideas here and
 adapt them to your language of choice. Related projects will be included
 here.
 
-These editor plugins provide support for prose documents:
-- vim: https://github.com/RobotNerd/prose-english-vim
+These editor plugins provide support for proze documents:
+- vim: https://github.com/RobotNerd/proze-english-vim
 
-If your favorite editor does not have a plugin that supports .prose,
+If your favorite editor does not have a plugin that supports .proze,
 please write one and it will be linked here.
 
 > TODO add notes a/b the intended usage; use LaTeX if you need something fancy
@@ -31,7 +31,7 @@ please write one and it will be linked here.
   - [Configuration: project compilation options](#configuration-project-compilation-options)
     - [File order](#file-order)
     - [Conversion options](#conversion-options)
-- [Compiling Prose](#compiling-prose)
+- [Compiling Proze](#compiling-proze)
 - [Syntax highlighting](#syntax-highlighting)
 - [Folder Structure](#folder-structure)
 - [Version control](#version-control)
@@ -39,12 +39,12 @@ please write one and it will be linked here.
 
 ## File extension
 
-Prose files are text-only and use the file extension `.prose`.
+Proze files are text-only and use the file extension `.proze`.
 
 ## Grammar
 
-Prose documents are structured as a series of paragraphs. The rules
-below describe how prose expects the writing to be structured.
+Proze documents are structured as a series of paragraphs. The rules
+below describe how proze expects the writing to be structured.
 
 - Paragraphs are separated by at least one blank line.
   - Multiple contiguous blank lines are allowed.
@@ -214,7 +214,7 @@ These tokens are recognized:
 
 ## Configuration file
 
-Each prose project can optionally include a configuration file specific to
+Each proze project can optionally include a configuration file specific to
 that project. It is located in the project root (see
 [Folder structure](#folder-structure)). The following formats are supported:
 - json
@@ -222,7 +222,7 @@ that project. It is located in the project root (see
 
 The configuration file is named `config.*` with the appropriate file
 extension based on the file format (e.g. `config.json` or `config.yml`).
-Text editors and conversion tools that support prose should attempt to
+Text editors and conversion tools that support proze should attempt to
 autodetect the file format when possible, regardless of file extension.
 
 The configuration file can contain:
@@ -261,7 +261,7 @@ Rules
 - Name patterns
   - Name patterns are added as a list of values under the appropriate section.
   - Each name pattern is treated as a regular expression.
-  - A name pattern is matched with text in a prose document as long as that
+  - A name pattern is matched with text in a proze document as long as that
     portion of the text is not adjacent to any of these characters:
     - A-Z
     - a-z
@@ -276,7 +276,7 @@ Rules
     the dictionary of the text editor. This is to ensure that these
     names are not shown as misspellings by built-in spell checkers.
     This is useful, for example, for invented names in fictional stories.
-  - Spell checking of these patterns should only occur for prose
+  - Spell checking of these patterns should only occur for proze
     files in the same project as the configuration file from which the
     name patterns were loaded. The names unique to one story should not
     be permanently added to the spelling dictionary so they don't bleed
@@ -332,22 +332,22 @@ names:
 
 ### Configuration: project compilation options
 
-Prose documents are compiled to other formats for publication. This
+Proze documents are compiled to other formats for publication. This
 section describes the compilation options that can be included in
 the configuration file. All of these options are placed in the
 configuration file under the `compile` section.
 
-See [Compiling prose](#compiling-prose) for how to compile projects.
+See [Compiling proze](#compiling-proze) for how to compile projects.
 
 #### File order
 
 An optional `order` section can be included to define a specific
-order in which prose files are added to the project. This is a list of
+order in which proze files are added to the project. This is a list of
 file paths relative to the project root. If a file exists in the
 project directory but isn't included in the order list, then it will
 not be added to the compiled output.
 
-If no `order` field exists in the config file, then all prose files
+If no `order` field exists in the config file, then all proze files
 found in the project and its subfolders will be compiled in alphabetical
 order. This order takes into account the full path
 from the project root to the file. A subdirectory can be included, and
@@ -360,18 +360,18 @@ Here is an example portion of `config.yml`:
 ---
 compile:
   order:
-    - title.prose
+    - title.proze
     - chapter01/
     - chapter02/
-    - epilogue.prose
-    - acknowledgements.prose
+    - epilogue.proze
+    - acknowledgements.proze
 ```
 
 #### Conversion options
 
-These conversion rules are used when compiling prose to another
+These conversion rules are used when compiling proze to another
 document format. If the document type of the output document does not
-support a feature (e.g. bold, italic text), the prose-specific markup
+support a feature (e.g. bold, italic text), the proze-specific markup
 characters are removed but no additional changes are made.
 
 - Comments and bracketed text blocks are ignored.
@@ -393,7 +393,7 @@ The following rules are configurable:
   document.
   - __justified__: Each paragraph is left justified. A single blank line
     separates one paragraph from the next.
-  - __prose__: (default) A tab is inserted to indent the first line of
+  - __tab__: (default) A tab is inserted to indent the first line of
     every paragraph. (See the `tabFirst` settings for additional info). Blank
     lines between paragraphs are removed.
 
@@ -406,24 +406,24 @@ The following rules are configurable:
   of the first paragraph in the document.
   - Values can be __true__ or __false__.
   - Default __false__.
-  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+  - Only applicable if `compile.paragraph.mode` is set to __tab__.
 - `compile.paragraph.tabFirst.chapter`: If true, a tab is inserted
   at the beginning of the first paragraph of a chapter.
   - Values can be __true__ or __false__.
   - Default __false__.
-  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+  - Only applicable if `compile.paragraph.mode` is set to __tab__.
 - `compile.paragraph.tabFirst.secetion` If true, a tab is inserted
   at the beginning of the first paragraph of a section.
   - Values can be __true__ or __false__.
   - Default __false__.
-  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+  - Only applicable if `compile.paragraph.mode` is set to __tab__.
 
 - Mode and tabs example:
   ```
   ---
   compile:
     paragraph:
-      mode: prose
+      mode: tab 
       tabFirst:
         title: true
         chapter: false
@@ -434,13 +434,13 @@ The following rules are configurable:
   paragraphs are not removed.
   - Values can be __true__ or __false__.
   - Default __true__.
-  - Only applicable if `compile.paragraph.mode` is set to __prose__.
+  - Only applicable if `compile.paragraph.mode` is set to __tab__.
   - Example:
     ```
     ---
     compile:
       paragraph:
-        mode: prose
+        mode: tab
         removeBlankLines: false
     ```
 
@@ -459,7 +459,7 @@ The following rules are configurable:
 >    - include "title", "chapter", "section" labels
 >    - line break options; before chapter, section, etc.; manual
 
-## Compiling prose
+## Compiling proze
 
 > TODO
 >  - how to compile
@@ -474,8 +474,8 @@ The following rules are configurable:
 
 ## Syntax highlighting
 
-Text editors that support prose should provide syntax highlighting. This is
-one of the key benefits of using prose, since syntax highlighting provides
+Text editors that support proze should provide syntax highlighting. This is
+one of the key benefits of using proze, since syntax highlighting provides
 visual feedback to a writer about the structure of the document.
 
 The following elements should be uniquely highlighted:
@@ -489,9 +489,9 @@ The following elements should be uniquely highlighted:
 
 ## Folder structure
 
-Each story written with prose should be placed in its own directory.
+Each story written with proze should be placed in its own directory.
 The configuration file must be placed in the root directory of the project.
-Prose files containing the actual narrative writing can be placed in the
+Proze files containing the actual narrative writing can be placed in the
 root directory or in subfolders.
 
 Here is a simple example with everything in the project root directory:
@@ -499,40 +499,40 @@ Here is a simple example with everything in the project root directory:
 ```
 my-project/
   config.yml
-  my-story-chp-1.prose
-  my-story-chp-2.prose
-  title.prose
+  my-story-chp-1.proze
+  my-story-chp-2.proze
+  title.proze
 ```
 
 A more complicated example may look like this:
 
 ```
 my-project/
-  acknowledgements.prose
-  appendix.prose
+  acknowledgements.proze
+  appendix.proze
   config.json
   part1/
-    chapter-01.prose
-    chapter-02.prose
-    chapter-03.prose
+    chapter-01.proze
+    chapter-02.proze
+    chapter-03.proze
   part2/
-    chapter-04.prose
-    chapter-05.prose
-    chapter-06.prose
-    chapter-07.prose
+    chapter-04.proze
+    chapter-05.proze
+    chapter-06.proze
+    chapter-07.proze
   part3/
-    chapter-08.prose
-  title.prose
+    chapter-08.proze
+  title.proze
 ```
 
 See [Configuration: project compilation options](#configuration-project-compilation-options)
 for information on how to order files when compiling a document from
-prose files.
+proze files.
 
 ## Version control
 
-It is strongly recommended that all prose projects be placed under
-version control. The prose syntax project uses [git](https://git-scm.com/),
+It is strongly recommended that all proze projects be placed under
+version control. The proze syntax project uses [git](https://git-scm.com/),
 but any alternative version control system can be used.
 Commits should be performed frequently while writing.
 
@@ -546,7 +546,7 @@ repository history.
 
 ## Best practices
 
-The following are suggested best practices for using prose:
+The following are suggested best practices for using proze:
 - Text editors should be configured to line wrap.
   - Don't manually add line breaks within a paragraph.
   - Line wrapping makes it much easier to edit text in paragraph form.
@@ -597,7 +597,7 @@ The following are suggested best practices for using prose:
     these take the place of writing notes in red ink on a printout of
     a story.
 - Comment tokens should be added to bracket blocks or comment blocks as needed.
-  - When editing, search for comment tokens in prose files to find specific
+  - When editing, search for comment tokens in proze files to find specific
     areas that still need to be worked on.
   - Suggested use of comment tokens:
     - Use `TODO` for portions of a story that haven't yet been written.
