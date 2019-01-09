@@ -251,7 +251,7 @@ Rules
     the course of rewriting a story. By placing the old name in this group,
     it can be highlighted as an error in the document.
 - A list of name patterns is added under each category header.
-- The text editor must match words in the names lists and use syntax
+- The text editor must match words in the name lists and use syntax
   highlighting to distinguish these patterns from the surrounding text.
   - When possible, the highlighting used for the groups of characters,
     places, and things should be visually distinct from each other.
@@ -259,8 +259,14 @@ Rules
     things italicized.)
   - When possible, items in the invalid group should be highlighted as errors.
 - Name patterns
-  - Name patterns are added as a list of values under the appropriate section.
-  - Each name pattern is treated as a regular expression.
+  - If the name pattern is all lowercase, then the variation where the first
+    letter of the name is uppercase is condisered valid. This is useful
+    when a name that isn't a proper noun is capitalized at the beginning
+    of a sentence.
+  - If the name pattern contains mixed case, then only that variation of
+    the name is considered to be valid.
+  - ALL-CAPS variations of name patterns within a proze document are also
+    considered to be valid.
   - A name pattern is matched with text in a proze document as long as that
     portion of the text is not adjacent to any of these characters:
     - A-Z
@@ -276,6 +282,11 @@ Rules
     the dictionary of the text editor. This is to ensure that these
     names are not shown as misspellings by built-in spell checkers.
     This is useful, for example, for invented names in fictional stories.
+    In addition to the pattern as it is listed in the config file, these
+    variations should be added if the spell checker is case sensitive:
+    - The ALL-CAPS variation of the name.
+    - For all lowercase patterns, the variation of the name where the
+      first letter is capitalized.
   - Spell checking of these patterns should only occur for proze
     files in the same project as the configuration file from which the
     name patterns were loaded. The names unique to one story should not
